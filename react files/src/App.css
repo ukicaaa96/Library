@@ -1,0 +1,80 @@
+.login {
+  border: 2px solid black;
+  align-items: center;
+	width: 100%;
+	max-width: 800px;
+	padding: 50px 40px;
+	background-color:lightgray;
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  margin: 10px 0;
+}
+
+
+input[type=text], input[type=password] {
+  border-radius: 5px;
+  width: 97%;
+  align-items: center;
+  padding: 12px 12px;
+  margin: auto;
+  display: inline-block;
+  border: 2px solid black;
+  
+}
+.select{
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 20px;
+
+}
+
+
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5px
+}
+.center {
+  margin-left:25%;
+  margin-right: 25%;
+  margin-top: 10%;
+}
+
+
+.buttons button{
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.buttons button:hover {
+  background-color: rgb(255, 174, 0)
+}
+
+.avatar {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 20%
+}
+.avatar-litle{
+align-items: center;
+
+}
+
+.info{
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+
+}
