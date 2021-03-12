@@ -20,7 +20,7 @@ $userId = $_REQUEST['id'];
 function get_last_five($id,$conn){
 
 
-	$sql = "SELECT * FROM istorija WHERE user_id =".$id." LIMIT 10";
+	$sql = "SELECT * FROM istorija WHERE user_id =".$id." LIMIT 20";
     $result = mysqli_query($conn, $sql);
     $cnt = mysqli_num_rows($result);
     $books = [];
@@ -37,7 +37,7 @@ function get_last_five($id,$conn){
 				$color = 'red';
 			}
 			else{
-				$color = 'white';
+				$color = 'lightgray';
 			}
 			
 			$dateFormat = explode(" ",$row['datum'])[0];

@@ -75,7 +75,6 @@ class Student_login extends Component {
             <img src="https://freeiconshop.com/wp-content/uploads/edd/book-open-flat.png" alt="Avatar" className="avatar"/>
                 E-mail:
                 <input className='mail'placeholder="Unesite mail" type="text" value={this.state.mail} onChange={this.handleChangeMail} />
-                <br></br>
                 Lozinka
                 <input className='password'placeholder="Unesite lozinku" type="password" value={this.state.lozinka} onChange={this.handleChangePassword} />
                 <div className='buttons'>

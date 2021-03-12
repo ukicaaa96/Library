@@ -17,72 +17,43 @@ function get_books($bookArray)
 
 }
 
-function get_user_id($ime, $conn){
 
-	$sql = "SELECT * FROM korisnici WHERE ime = '".$ime."';";
-    $result = mysqli_query($conn, $sql);
-    $cnt = mysqli_num_rows($result);
 
-	if($cnt != 0){
+$id = $_REQUEST['id'];
+
+
+
+$sql = 'SELECT knjige.ime_knjige, iznajmljivanje.datum FROM knjige INNER JOIN iznajmljivanje ON knjige.id_knjige = iznajmljivanje.id_knjige and iznajmljivanje.id_korisnika= '.$id.';';
+
+if($result = $conn -> query($sql)){
+	$cnt = mysqli_num_rows($result);
+	if($cnt == 0){
+		echo generate_return_message("Ovaj korisnik nema iznajmljenih knjiga");
+	}
+	else{
+		$bookArray = [];
 
 		while ($row = mysqli_fetch_assoc($result)) 
 		{
-    		$userId = $row['id_korisnika'];
+			$dateFormat = explode(" ",$row['datum'])[0];
+			array_push($bookArray,[
+				'knjiga' =>$row['ime_knjige'],
+			    'datum' =>$dateFormat
+			]);
 		}
-
-		return array('poruka' => true, 'id' => $userId );
-	}
-
-	else{
-		return array('poruka' => false);
-	}
-}
-
-
-
-
-
-$ime = $_REQUEST['ime'];
-$status = $_REQUEST['status'];
-$data = get_user_id($ime,$conn);
-
-
-if($data['poruka'] == true){
-
-	$userId = $data['id'];
-
-	if(isset($_REQUEST['status'])){
-		if($_REQUEST['status'] != 'student'){
-			$sql = 'SELECT knjige.ime_knjige FROM knjige INNER JOIN iznajmljivanje ON knjige.id_knjige = iznajmljivanje.id_knjige and iznajmljivanje.id_korisnika= '.$userId.';';
-
-			if($result = $conn -> query($sql)){
-
-				$cnt = mysqli_num_rows($result);
-				$bookArray = [];
-
-				while ($row = mysqli_fetch_assoc($result)) 
-				{
-	    			array_push($bookArray, ['knjiga' =>$row['ime_knjige']]);
-				}
-		
-				if($cnt == 0){
-					echo generate_return_message("Ovaj korisnik nema iznajmljenih knjiga");
-				}
-				else{
-					get_books($bookArray);
-
-				}
-			
-			}
-		}
-		else{
-			echo generate_return_message("Student ne moze imati uvid u iznajmljene knjige");
-		}
+		get_books($bookArray);
 	}
 }
-else{
-	echo generate_return_message("Korisnik ne postoji");
-}
+
+
+
+
+
+
+
+
+	
+
 
 
 

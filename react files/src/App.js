@@ -45,7 +45,9 @@ event.preventDefault();
     return (
   
      <div>
-       <Student_dashboard/>
+       
+       <Student_dashboard></Student_dashboard>
+   
      </div>
     );
   }
